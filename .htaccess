@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+DirectoryIndex core.php
+
+php_flag display_errors 1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+RewriteCond $1 !\.(js|ico|gif|jpg|png|css|html|swf|mp3|wav|txt)$
+RewriteRule (.*) core.php [QSA,L]

@@ -1,0 +1,1 @@
+sass _footer.scss footer.css

@@ -1,0 +1,203 @@
+/* COLORS */
+$colors_name: (
+	'black':					$color_black,
+	'white':					$color_white,
+	'primary':					$color_primary,
+	'secondary':				$color_secondary,
+	'element':					$color_elements,
+	'dark-gray':				$color_dark_gray,
+	'gray':						$color_gray,
+	'light-gray':				$color_light_gray,
+	'danger':					#993333,
+	'warning':					#998033,
+	'info':						#334D99,
+	'success':					#4D9933,
+	'confuse':					#803399,
+	'red':						#FF0000,
+	'yellow':					#FFFF00,
+	'blue':						#0000FF,
+	'green':					#00FF00,
+	'purple':					#7700FF,
+	'cyan':						#00FFFF,
+	'fuchsia':					#FF00FF,
+	'orange':					#FF7700,
+	'magenta':					#FF0077,
+	'techno-cyan':				#22DDAA,
+	'deep-purple':				#2F042F,
+	'electric-blue':			#003399,
+	'neon-green':				#55FF00,
+	'fluo-purple':				#BB00FF,
+	'cyber-orange':				#FF8800,
+	'cheddar':					#FF7243,
+	'wine':						#990033,
+	'beer':						#C1963C,
+	'dirt':						#996666,
+	'beige':					#999966,
+	'rss':						#F26522,
+	'facebook':					#3B5998,
+	'twitter':					#1DA1F2,
+	'instagram':				#C13584,
+	'linkedin':					#0077B5,
+	'telegram':					#0088CC,
+	'youtube':					#FF0000,
+	'askfm':					#DB3552,
+	'github':					#333333,
+	'gitlab':					#E24329,
+	'android':					#A4C639,
+	'php':						#8892BE,
+	'js':						#F7DF1E
+);
+
+@each $name, $hex in $colors_name {
+
+/* #{$name} */
+
+.container.container--#{$name} {
+	background-color: lighten($hex, 10%);
+	@if $name == 'black' or $name == 'dark-gray' {
+		color: $color_white;
+	}
+}
+
+.button.button--#{$name} {
+	@if $name == 'white' or $name == 'yellow' or $name == 'light_gray' {
+		color: $color_black;
+	} @else {
+		color: $color_white;
+	}
+	background-color: lighten($hex, 15%);
+
+	&.button--bordered {
+		@if $name == 'yellow' or $name == 'cyan' or $name == 'neon_green' or $name == 'white' or $name == 'primary' or $name == 'light_gray' {
+			border-color: darken($hex, 7.5%);
+		} @else {
+			border-color: $hex;
+		}
+
+		&.button--empty {
+			@if $name == 'white' {
+				color: darken($hex, 30%);
+			} @else {
+				color: darken($hex, 15%);
+			}
+
+			&:hover {
+				@if $name == 'white' {
+					color: $color_black;
+				}
+				background-color: lighten($hex, 20%);
+			}
+		}
+	}
+
+	&:hover {
+		@if $name == 'white' or $name == 'yellow' {
+			background-color: darken($hex, 15%);
+		} @else if $name == 'deep_purple' or $name == 'secondary' {
+			background-color: lighten($hex, 2.5%);
+		} @else {
+			background-color: darken($hex, 5%);
+		}
+		@if $name == 'dark_gray' or $name == 'black' {
+			color: $color_white;
+		} @else if $name == 'deep_purple' or $name == 'electric_blue' or $name == 'secondary' {
+			color: $color_light_gray;
+		} @else {
+			color: $color_dark_gray;
+		}
+	}
+}
+
+.box.box--#{$name} {
+	@if $name == 'black'{
+		color: $color_white;
+	}
+
+	background-color: lighten($hex, 10%);
+
+	&.box--bordered {
+		@if $name == 'elements' {
+			border: $border_little * 2 solid darken($hex, 15%);
+		} @else {
+			border: $border_little * 2 solid darken($hex, 10%);
+		}
+	}
+
+	&.box--information {
+		@if $name == 'elements' {
+			border-left: $border_fat * 2 solid darken($hex, 15%);
+		} @else {
+			border-left: $border_fat * 2 solid darken($hex, 10%);
+		}
+	}
+}
+
+.menu.menu--#{$name} {
+	@if $name == 'white' {
+		background-color: $hex;
+	} @else {
+		background-color: lighten($hex, 5%);
+	}
+
+	.menu__item {
+		
+		.menu__item__link {
+			@if $name == 'black' or $name == 'secondary' {
+				color: $color_white;
+			} @else {
+				color: $color_black;
+			}
+			@if $name == 'black' or $name == 'secondary' {
+				background-color: lighten($hex, 30%);
+			} @elseif $name == 'dark_gray' {
+				background-color: lighten($hex, 20%);
+			} @else {
+				background-color: $hex;
+			}
+
+			&.menu__item__link--active {
+				@if $name == 'black' or $name == 'secondary' or $name == 'dark_gray' {
+					color: $color_white;
+					background-color: $hex;
+				} @else {
+					color: $color_black;
+					background-color: darken($hex, 15%);
+				}
+			}
+
+			&:hover {
+				color: $color_white;
+				@if $name == 'black' {
+					background-color: lighten($hex, 20%);
+				} @elseif $name == 'secondary' or $name == 'dark_gray' {
+					background-color: lighten($hex, 10%);
+				} @else {
+					background-color: darken($hex, 15%);
+				}
+			}
+		}
+	}
+}
+
+.seal.seal--#{$name} {
+	background-color: $hex;
+}
+
+.text--#{$name} {
+	font-weight: bold;
+	@if $name == 'deep_purple'{
+		color: lighten($hex, 5%);
+	} @else {
+		color: $hex;
+	}
+}
+
+.hr--#{$name} {
+	color: $hex;
+	border-color: $hex;
+	background-color: $hex;
+}
+
+/*************************************************************************/
+
+}
